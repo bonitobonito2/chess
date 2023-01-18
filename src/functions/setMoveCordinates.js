@@ -15,7 +15,6 @@ for (let i = 0; i < 64; i++) {
   }
 }
 arr.push(subarr);
-console.log(arr);
 export const setMoveCordinates = (figureName, props, isWhite, firstClick) => {
   let indexOfLine = arr.findIndex((data) =>
     data.find((data) => data == props.id)
@@ -51,9 +50,6 @@ export const setMoveCordinates = (figureName, props, isWhite, firstClick) => {
       cordinates = cordinates.concat(helper);
       break;
     case "etli":
-      console.log(indexOfLine);
-      console.log(indexOfFigure);
-
       const left = [
         arr[indexOfLine][indexOfFigure - 1],
         arr[indexOfLine][indexOfFigure - 2],
@@ -89,7 +85,6 @@ export const setMoveCordinates = (figureName, props, isWhite, firstClick) => {
         props.id - 64,
       ];
       cordinates = cordinates.concat(left);
-      console.log(cordinates);
       break;
   }
 

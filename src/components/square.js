@@ -15,6 +15,7 @@ import { setMoveCordinates } from "../functions/setMoveCordinates";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
+import { moveFigure } from "../functions/moveFigure";
 //blacks
 import pykeBlack from "../figures/blacks/pyke_b.png";
 import gamblierBlack from "../figures/blacks/gamblier_b.png";
@@ -22,6 +23,8 @@ import horseBlack from "../figures/blacks/horse_b.png";
 import etliBlack from "../figures/blacks/etli_b.png";
 import queenBlack from "../figures/blacks/queen_b.png";
 import kingBlack from "../figures/blacks/king_b.png";
+import { removePosition } from "../functions/removePosition";
+import { remove } from "../functions/removeOnSameIdAndSecondClick";
 
 function Square(props) {
   const [state, setState] = useState("");
@@ -47,7 +50,6 @@ function Square(props) {
   const dispatch = useDispatch();
 
   const clickHandler = useCallback(() => {
-    console.log("wtf", name);
     if (name && !firstClick) {
       if (name == "pyke") {
         dispatch(
@@ -60,7 +62,6 @@ function Square(props) {
           figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
         );
       } else if (name == "etli") {
-        console.log("shemovedi");
         dispatch(
           figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
         );
@@ -72,43 +73,19 @@ function Square(props) {
         (firstClick && img && !isClickedFigureWhite && isWhite) ||
         (firstClick && !img)
       ) {
-        switch (figure) {
-          case "pyke":
-            if (isClickedFigureWhite == true) setImg(pyke);
-            else if (isClickedFigureWhite == false) setImg(pykeBlack);
-            break;
-          case "gamblier":
-            setImg(gamblier);
-            break;
-          case "queen":
-            setImg(queen);
-            break;
-          case "king":
-            setImg(king);
-            break;
-          case "horse":
-            setImg(isClickedFigureWhite ? horse : horseBlack);
-            break;
-          case "etli":
-            setImg(isClickedFigureWhite ? etli : etliBlack);
-            break;
-          default:
-            setImg(queen);
-        }
-        setState(figure);
-        dispatch(figureActions.setSecondClick(true));
-        setName(figure);
-        dispatch(figureActions.setAccesFigures([]));
-        dispatch(figureActions.setPykeFirstClick());
-        setIsWhite(isClickedFigureWhite);
-        dispatch(figureActions.setIsClickedFigureWhite(undefined));
+        moveFigure(
+          figure,
+          isClickedFigureWhite,
+          setImg,
+          dispatch,
+          figureActions,
+          setState,
+          setIsWhite,
+          setName
+        );
       }
     } else {
-      dispatch(figureActions.setAccesFigures([]));
-      dispatch(figureActions.setSecondClick(false));
-      dispatch(figureActions.setFirstClick(false));
-      dispatch(figureActions.setId(-1));
-      // setImg(undefined);
+      removePosition(dispatch, figureActions);
     }
   });
   useEffect(() => {
@@ -126,11 +103,7 @@ function Square(props) {
   }, [accesIds]);
   useEffect(() => {
     if (id == props.id && secondClick) {
-      setState("error");
-      dispatch(figureActions.setSecondClick(false));
-      dispatch(figureActions.setFirstClick(false));
-      dispatch(figureActions.setId(-1));
-      setImg(undefined);
+      remove(dispatch, figureActions, setState, setImg);
     }
   }, [id, secondClick, firstClick]);
 
