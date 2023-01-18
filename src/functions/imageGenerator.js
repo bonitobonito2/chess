@@ -1,11 +1,31 @@
-import king from "../figures/king.png";
-import etli from "../figures/etli.png";
-import pyke from "../figures/pyke.png";
-import gamblier from "../figures/gamblier.png";
-import horse from "../figures/horse.png";
-import queen from "../figures/queen.png";
+import king from "../figures/whites/king.png";
+import etli from "../figures/whites/etli.png";
+import pyke from "../figures/whites/pyke.png";
+import pykeBlack from "../figures/blacks/pyke_b.png";
+
+import gamblier from "../figures/whites/gamblier.png";
+import horse from "../figures/whites/horse.png";
+import queen from "../figures/whites/queen.png";
+
 export const imageGenerator = (i) => {
   switch (i) {
+    case 8:
+      return [pykeBlack, "pyke"];
+    case 9:
+      return [pykeBlack, "pyke"];
+    case 10:
+      return [pykeBlack, "pyke"];
+    case 11:
+      return [pykeBlack, "pyke"];
+    case 12:
+      return [pykeBlack, "pyke"];
+    case 13:
+      return [pykeBlack, "pyke"];
+    case 14:
+      return [pykeBlack, "pyke"];
+    case 15:
+      return [pykeBlack, "pyke"];
+
     case 48:
       return [pyke, "pyke"];
     case 49:

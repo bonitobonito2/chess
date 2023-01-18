@@ -1,11 +1,4 @@
 
-.square{
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .figure{
     width: 70px;
@@ -15,4 +8,22 @@
     width: 25px;
     height: 25px;
     background-color: brown;
+}
+.blackSquare{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(73, 72, 72);
+}
+
+
+.whiteSquare{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
 }

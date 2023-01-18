@@ -1,15 +1,15 @@
 import classes from "./square.module.css";
 import { figureActions } from "../store/clickedFigureSlice";
-import king from "../figures/king.png";
-import etli from "../figures/etli.png";
-import pyke from "../figures/pyke.png";
+import king from "../figures/whites/king.png";
+import etli from "../figures/whites/etli.png";
+import pyke from "../figures/whites/pyke.png";
 import { setFigureActions } from "../functions/setFigureActions";
-import gamblier from "../figures/gamblier.png";
+import gamblier from "../figures/whites/gamblier.png";
 import { memo, useMemo } from "react";
 import { imageGenerator } from "../functions/imageGenerator";
 import { useCallback } from "react";
-import horse from "../figures/horse.png";
-import queen from "../figures/queen.png";
+import horse from "../figures/whites/horse.png";
+import queen from "../figures/whites/queen.png";
 import { useSelector } from "react-redux";
 import { setMoveCordinates } from "../functions/setMoveCordinates";
 import { useDispatch } from "react-redux";
@@ -111,8 +111,9 @@ function Square(props) {
   return (
     <div
       onClick={clickHandler}
-      style={{ backgroundColor: props.color }}
-      className={classes.square}
+      className={
+        props.color == "black" ? classes.blackSquare : classes.whiteSquare
+      }
     >
       {isAcces && !img && <div className={classes.point}></div>}
       {state && state != "error" && (
