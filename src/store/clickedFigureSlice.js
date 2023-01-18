@@ -7,6 +7,7 @@ let initialState = {
   id: -1,
   accessFigureIds: [],
   pykeFirstClick: true,
+  isClickedFigureWhite: undefined,
 };
 
 const clickedFigureSlice = createSlice({
@@ -31,6 +32,9 @@ const clickedFigureSlice = createSlice({
     },
     setPykeFirstClick(state) {
       state.pykeFirstClick = false;
+    },
+    setIsClickedFigureWhite(state, action) {
+      state.isClickedFigureWhite = action.payload;
     },
   },
 });

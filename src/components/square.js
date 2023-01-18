@@ -15,14 +15,26 @@ import { setMoveCordinates } from "../functions/setMoveCordinates";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
+//blacks
+import pykeBlack from "../figures/blacks/pyke_b.png";
+import gamblierBlack from "../figures/blacks/gamblier_b.png";
+import horseBlack from "../figures/blacks/horse_b.png";
+import etliBlack from "../figures/blacks/etli_b.png";
+import queenBlack from "../figures/blacks/queen_b.png";
+import kingBlack from "../figures/blacks/king_b.png";
+
 function Square(props) {
   const [state, setState] = useState("");
   const [img, setImg] = useState();
   const [isAcces, setAcces] = useState(false);
   const [name, setName] = useState();
+  const [isWhite, setIsWhite] = useState(undefined);
   const id = useSelector((data) => data.clickedFigureSlice.id);
   const figure = useSelector((data) => data.clickedFigureSlice.figure);
   const firstClick = useSelector((data) => data.clickedFigureSlice.clickedOnce);
+  const isClickedFigureWhite = useSelector(
+    (data) => data.clickedFigureSlice.isClickedFigureWhite
+  );
   const pykeFirstClick = useSelector(
     (data) => data.clickedFigureSlice.pykeFirstClick
   );
@@ -35,27 +47,38 @@ function Square(props) {
   const dispatch = useDispatch();
 
   const clickHandler = useCallback(() => {
+    console.log("wtf", name);
     if (name && !firstClick) {
       if (name == "pyke") {
-        if (pykeFirstClick)
-          dispatch(
-            figureActions.setAccesFigures(setMoveCordinates(name, props))
-          );
-        else dispatch(figureActions.setAccesFigures([props.id - 8]));
+        dispatch(
+          figureActions.setAccesFigures(
+            setMoveCordinates(name, props, isWhite, pykeFirstClick)
+          )
+        );
       } else if (name == "horse") {
-        dispatch(figureActions.setAccesFigures(setMoveCordinates(name, props)));
+        dispatch(
+          figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
+        );
+      } else if (name == "etli") {
+        console.log("shemovedi");
+        dispatch(
+          figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
+        );
       }
-      setFigureActions(dispatch, figureActions, name, props.id);
-    } else if (figure && accesIds.find((data) => data == props.id) && !img) {
-      console.log("MEORE");
-
-      if (firstClick) {
+      setFigureActions(dispatch, figureActions, name, props.id, isWhite);
+    } else if (figure && accesIds.find((data) => data == props.id)) {
+      if (
+        (firstClick && img && isClickedFigureWhite && !isWhite) ||
+        (firstClick && img && !isClickedFigureWhite && isWhite) ||
+        (firstClick && !img)
+      ) {
         switch (figure) {
           case "pyke":
-            setImg(pyke);
+            if (isClickedFigureWhite == true) setImg(pyke);
+            else if (isClickedFigureWhite == false) setImg(pykeBlack);
             break;
-          case "etli":
-            setImg(etli);
+          case "gamblier":
+            setImg(gamblier);
             break;
           case "queen":
             setImg(queen);
@@ -64,10 +87,10 @@ function Square(props) {
             setImg(king);
             break;
           case "horse":
-            setImg(horse);
+            setImg(isClickedFigureWhite ? horse : horseBlack);
             break;
-          case "gamblier":
-            setImg(gamblier);
+          case "etli":
+            setImg(isClickedFigureWhite ? etli : etliBlack);
             break;
           default:
             setImg(queen);
@@ -77,6 +100,8 @@ function Square(props) {
         setName(figure);
         dispatch(figureActions.setAccesFigures([]));
         dispatch(figureActions.setPykeFirstClick());
+        setIsWhite(isClickedFigureWhite);
+        dispatch(figureActions.setIsClickedFigureWhite(undefined));
       }
     } else {
       dispatch(figureActions.setAccesFigures([]));
@@ -91,6 +116,7 @@ function Square(props) {
     if (img) {
       setName(img[1]);
       setImg(img[0]);
+      setIsWhite(img[2]);
     }
   }, []);
   useEffect(() => {
@@ -108,7 +134,12 @@ function Square(props) {
     }
   }, [id, secondClick, firstClick]);
 
-  return (
+  return (isAcces && img && isClickedFigureWhite && !isWhite) ||
+    (isAcces && img && !isClickedFigureWhite && isWhite) ? (
+    <div onClick={clickHandler} className={classes.redSquare}>
+      <img className={classes.figure} src={img} />
+    </div>
+  ) : (
     <div
       onClick={clickHandler}
       className={
@@ -116,6 +147,9 @@ function Square(props) {
       }
     >
       {isAcces && !img && <div className={classes.point}></div>}
+      {isAcces && img && isClickedFigureWhite && !isWhite && (
+        <div className={classes.kill}></div>
+      )}
       {state && state != "error" && (
         <img className={classes.figure} src={img} />
       )}
