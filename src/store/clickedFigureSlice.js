@@ -8,6 +8,7 @@ let initialState = {
   accessFigureIds: [],
   pykeFirstClick: true,
   isClickedFigureWhite: undefined,
+  placedSpaces: [],
 };
 
 const clickedFigureSlice = createSlice({
@@ -35,6 +36,15 @@ const clickedFigureSlice = createSlice({
     },
     setIsClickedFigureWhite(state, action) {
       state.isClickedFigureWhite = action.payload;
+    },
+
+    addPlacesSpaces(state, action) {
+      const data = [...state.placedSpaces, action.payload];
+      state.placedSpaces = [...data];
+    },
+    removeFromPlacedSpaces(state, action) {
+      const indexOfItem = state.placedSpaces.indexOf(action.payload);
+      state.placedSpaces.splice(indexOfItem, 1);
     },
   },
 });
