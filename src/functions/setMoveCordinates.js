@@ -1,8 +1,4 @@
-const helperArr = [
-  [0, 1, 2, 3, 4, 5, 6, 7],
-  [8, 9, 10, 11, 12, 13, 14, 15],
-  [16],
-];
+import { controlMovesForHorse } from "./controlMoves/controlMoves";
 let arr = [];
 let subarr = [];
 for (let i = 0; i < 64; i++) {
@@ -15,10 +11,19 @@ for (let i = 0; i < 64; i++) {
   }
 }
 arr.push(subarr);
+console.log(arr);
 export const setMoveCordinates = (figureName, props, isWhite, firstClick) => {
-  let indexOfLine = arr.findIndex((data) =>
-    data.find((data) => data == props.id)
-  );
+  console.log("shemovedi");
+  console.log(props.id);
+
+  let indexOfLine;
+  if (props.id == 0) indexOfLine = 0;
+  else
+    indexOfLine = arr.findIndex((data) =>
+      data.find((data) => data == props.id)
+    );
+  console.log(indexOfLine);
+  console.log(arr[indexOfLine]);
 
   let indexOfFigure = arr[indexOfLine].findIndex((data) => data == props.id);
 
@@ -33,21 +38,17 @@ export const setMoveCordinates = (figureName, props, isWhite, firstClick) => {
       else if (!firstClick && !isWhite) cordinates = [props.id + 8];
       break;
     case "horse":
-      let helper = [
-        arr[indexOfLine][indexOfFigure - 6],
-        arr[indexOfLine][indexOfFigure + 6],
-      ];
       cordinates = [
-        props.id - 15,
-        props.id - 17,
-        props.id - 6,
-        props.id - 10,
-        props.id + 15,
-        props.id + 17,
-        props.id + 6,
-        props.id + 10,
+        controlMovesForHorse(indexOfFigure, props.id - 15),
+        controlMovesForHorse(indexOfFigure, props.id - 17),
+        controlMovesForHorse(indexOfFigure, props.id - 6),
+        controlMovesForHorse(indexOfFigure, props.id - 10),
+        controlMovesForHorse(indexOfFigure, props.id + 15),
+        controlMovesForHorse(indexOfFigure, props.id + 17),
+        controlMovesForHorse(indexOfFigure, props.id + 6),
+        controlMovesForHorse(indexOfFigure, props.id + 10),
       ];
-      cordinates = cordinates.concat(helper);
+
       break;
     case "etli":
       const left = [
