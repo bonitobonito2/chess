@@ -11,19 +11,13 @@ for (let i = 0; i < 64; i++) {
   }
 }
 arr.push(subarr);
-console.log(arr);
 export const setMoveCordinates = (figureName, props, isWhite, firstClick) => {
-  console.log("shemovedi");
-  console.log(props.id);
-
   let indexOfLine;
   if (props.id == 0) indexOfLine = 0;
   else
     indexOfLine = arr.findIndex((data) =>
       data.find((data) => data == props.id)
     );
-  console.log(indexOfLine);
-  console.log(arr[indexOfLine]);
 
   let indexOfFigure = arr[indexOfLine].findIndex((data) => data == props.id);
 
