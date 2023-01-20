@@ -35,6 +35,10 @@ function Square(props) {
   const id = useSelector((data) => data.clickedFigureSlice.id);
   const figure = useSelector((data) => data.clickedFigureSlice.figure);
   const firstClick = useSelector((data) => data.clickedFigureSlice.clickedOnce);
+
+  const usedPlaces = useSelector(
+    (data) => data.clickedFigureSlice.placedSpaces
+  );
   const isClickedFigureWhite = useSelector(
     (data) => data.clickedFigureSlice.isClickedFigureWhite
   );
@@ -68,6 +72,9 @@ function Square(props) {
       }
       setFigureActions(dispatch, figureActions, name, props.id, isWhite);
     } else if (figure && accesIds.find((data) => data == props.id)) {
+      console.log(usedPlaces);
+      dispatch(figureActions.removeFromPlacedSpaces(id));
+      dispatch(figureActions.addPlacesSpaces(props.id));
       if (
         (firstClick && img && isClickedFigureWhite && !isWhite) ||
         (firstClick && img && !isClickedFigureWhite && isWhite) ||
@@ -91,6 +98,7 @@ function Square(props) {
   useEffect(() => {
     const img = imageGenerator(props.id);
     if (img) {
+      dispatch(figureActions.addPlacesSpaces(props.id));
       setName(img[1]);
       setImg(img[0]);
       setIsWhite(img[2]);
