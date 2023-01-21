@@ -111,7 +111,7 @@ function Square(props) {
   }, [accesIds]);
   useEffect(() => {
     if (id == props.id && secondClick) {
-      remove(dispatch, figureActions, setState, setImg);
+      remove(dispatch, figureActions, setState, setImg, setName);
     }
   }, [id, secondClick, firstClick]);
 
