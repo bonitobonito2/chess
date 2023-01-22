@@ -20,7 +20,8 @@ export const moveFigure = (
   figureActions,
   setState,
   setIsWhite,
-  setName
+  setName,
+  sound
 ) => {
   switch (figure) {
     case "pyke":
@@ -52,4 +53,5 @@ export const moveFigure = (
   dispatch(figureActions.setPykeFirstClick());
   setIsWhite(isClickedFigureWhite);
   dispatch(figureActions.setIsClickedFigureWhite(undefined));
+  sound();
 };

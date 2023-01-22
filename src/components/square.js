@@ -7,6 +7,7 @@ import { setFigureActions } from "../functions/setFigureActions";
 import gamblier from "../figures/whites/gamblier.png";
 import { memo, useMemo } from "react";
 import { imageGenerator } from "../functions/imageGenerator";
+import useSound from "use-sound";
 import { useCallback } from "react";
 import horse from "../figures/whites/horse.png";
 import queen from "../figures/whites/queen.png";
@@ -24,9 +25,11 @@ import etliBlack from "../figures/blacks/etli_b.png";
 import queenBlack from "../figures/blacks/queen_b.png";
 import kingBlack from "../figures/blacks/king_b.png";
 import { removePosition } from "../functions/removePosition";
+import moveSound from "../sounds/moveSound.wav";
 import { remove } from "../functions/removeOnSameIdAndSecondClick";
 
 function Square(props) {
+  const [sound] = useSound(moveSound);
   const [state, setState] = useState("");
   const [img, setImg] = useState();
   const [isAcces, setAcces] = useState(false);
@@ -88,7 +91,8 @@ function Square(props) {
           figureActions,
           setState,
           setIsWhite,
-          setName
+          setName,
+          sound
         );
       }
     } else {
