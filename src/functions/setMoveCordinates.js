@@ -2,6 +2,7 @@ import { controlMovesForHorse } from "./controlMoves/controlMoves";
 import store from "../store/store";
 import { moveOnRightPlace } from "./controlMoves/etliCordinates/moveOnRightPlace";
 import { cordinatesGeneratorForEtli } from "./controlMoves/etliCordinates/cordinatesGenerator";
+import { pykeMoves } from "./controlMoves/pykeMoves/pykeMoves";
 let arr = [];
 let subarr = [];
 for (let i = 0; i < 64; i++) {
@@ -30,12 +31,8 @@ export const setMoveCordinates = (figureName, props, isWhite, firstClick) => {
   let cordinates;
   switch (figureName) {
     case "pyke":
-      if (isWhite == true && firstClick)
-        cordinates = [props.id - 8, props.id - 16];
-      else if (firstClick && !isWhite)
-        cordinates = [props.id + 8, props.id + 16];
-      else if (!firstClick && isWhite) cordinates = [props.id - 8];
-      else if (!firstClick && !isWhite) cordinates = [props.id + 8];
+      cordinates = pykeMoves(isWhite, firstClick, props);
+
       break;
     case "horse":
       cordinates = [
