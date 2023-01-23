@@ -75,7 +75,13 @@ function Square(props) {
         );
       }
       setFigureActions(dispatch, figureActions, name, props.id, isWhite);
-    } else if (figure && accesIds.find((data) => data == props.id)) {
+    } else if (
+      figure &&
+      accesIds.find(
+        (data) =>
+          data == props.id || (accesIds.includes(0) && props.id == 0 && figure)
+      )
+    ) {
       console.log(usedPlaces);
       dispatch(figureActions.removeFromPlacedSpaces(id));
       dispatch(figureActions.addPlacesSpaces(props.id));
