@@ -1,5 +1,5 @@
 import classes from "./square.module.css";
-import { figureActions } from "../store/clickedFigureSlice";
+import clickedFigureSlice, { figureActions } from "../store/clickedFigureSlice";
 import king from "../figures/whites/king.png";
 import etli from "../figures/whites/etli.png";
 import pyke from "../figures/whites/pyke.png";
@@ -143,9 +143,9 @@ function Square(props) {
   ) : (
     <div
       onClick={clickHandler}
-      className={
+      className={` ${
         props.color == "black" ? classes.blackSquare : classes.whiteSquare
-      }
+      } ${props.id == id && classes.clicked}`}
     >
       {isAcces && !img && <div className={classes.point}></div>}
       {isAcces && img && isClickedFigureWhite && !isWhite && (
