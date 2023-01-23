@@ -58,7 +58,7 @@ function Square(props) {
 
   const clickHandler = useCallback(() => {
     if (name && !firstClick) {
-      console.log(props.id);
+      console.log(usedPlaces);
       if (name == "pyke") {
         dispatch(
           figureActions.setAccesFigures(
@@ -90,6 +90,12 @@ function Square(props) {
         (firstClick && img && !isClickedFigureWhite && isWhite) ||
         (firstClick && !img)
       ) {
+        if (
+          (firstClick && img && isClickedFigureWhite && !isWhite) ||
+          (firstClick && img && !isClickedFigureWhite && isWhite)
+        ) {
+          dispatch(figureActions.removeFromPlacedSpaces(id));
+        }
         moveFigure(
           figure,
           isClickedFigureWhite,

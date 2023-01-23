@@ -81,7 +81,6 @@ export const setMoveCordinates = (figureName, props, isWhite, firstClick) => {
         props.id - 64,
       ];
       cordinates = cordinates.concat(left);
-      console.log(cordinates);
       break;
   }
 
