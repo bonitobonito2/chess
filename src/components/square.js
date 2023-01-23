@@ -58,7 +58,6 @@ function Square(props) {
 
   const clickHandler = useCallback(() => {
     if (name && !firstClick) {
-      console.log(usedPlaces);
       if (name == "pyke") {
         dispatch(
           figureActions.setAccesFigures(
@@ -66,6 +65,7 @@ function Square(props) {
           )
         );
       } else if (name == "horse") {
+        console.log(usedPlaces);
         dispatch(
           figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
         );
