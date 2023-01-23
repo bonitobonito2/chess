@@ -53,6 +53,7 @@ export const setMoveCordinates = (figureName, props, isWhite, firstClick) => {
         arr[indexOfLine][indexOfFigure - 5],
         arr[indexOfLine][indexOfFigure - 6],
         arr[indexOfLine][indexOfFigure - 7],
+
         arr[indexOfLine][indexOfFigure + 1],
         arr[indexOfLine][indexOfFigure + 2],
         arr[indexOfLine][indexOfFigure + 3],
@@ -80,6 +81,7 @@ export const setMoveCordinates = (figureName, props, isWhite, firstClick) => {
         props.id - 64,
       ];
       cordinates = cordinates.concat(left);
+      console.log(cordinates);
       break;
   }
 

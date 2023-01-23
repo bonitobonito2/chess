@@ -58,6 +58,7 @@ function Square(props) {
 
   const clickHandler = useCallback(() => {
     if (name && !firstClick) {
+      console.log(props.id);
       if (name == "pyke") {
         dispatch(
           figureActions.setAccesFigures(
@@ -110,7 +111,10 @@ function Square(props) {
   }, []);
   useEffect(() => {
     const data = accesIds.find((data) => data == props.id);
+    if (accesIds.includes(0) && props.id == 0) setAcces(true);
+
     if (data) setAcces(true);
+    else if (accesIds.includes(0) && props.id == 0) setAcces(true);
     else setAcces(false);
   }, [accesIds]);
   useEffect(() => {
