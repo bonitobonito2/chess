@@ -24,6 +24,7 @@ export const moveFigure = (
   sound
 ) => {
   console.log(isClickedFigureWhite);
+  sound();
   switch (figure) {
     case "pyke":
       setImg(isClickedFigureWhite ? pyke : pykeBlack);
