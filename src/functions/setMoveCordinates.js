@@ -1,10 +1,8 @@
-import { controlMovesForHorse } from "./controlMoves/controlMoves";
+import { controlMovesForHorse } from "./controlMoves/horseMoves/controlMoves";
 import store from "../store/store";
-import { moveOnRightPlace } from "./controlMoves/etliCordinates/moveOnRightPlace";
 import { cordinatesGeneratorForEtli } from "./controlMoves/etliCordinates/cordinatesGenerator";
 import { pykeMoves } from "./controlMoves/pykeMoves/pykeMoves";
 import { cordinatesGeneratorForGamblier } from "./controlMoves/gamblierCordinates/cordinatesForGamblier";
-import clickedFigureSlice from "../store/clickedFigureSlice";
 import { cordinatesGeneratorForQueen } from "./controlMoves/cordinatesForQueen/cordinatesGenerator";
 import { cordinatesGeneratorForKing } from "./controlMoves/cordinatesForKing/cordinatesGeneratorForKing";
 let arr = [];
@@ -40,11 +38,9 @@ export const setMoveCordinates = (figureName, props, isWhite, firstClick) => {
     case "pyke":
       cordinates = pykeMoves(
         isWhite,
-        firstClick,
         props,
         usedPlaces,
-        unclickedPykeCordinates,
-        store
+        unclickedPykeCordinates
       );
 
       break;
