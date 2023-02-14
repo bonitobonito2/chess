@@ -12,13 +12,10 @@ export const moveOnRightPlaceForGamblier = (
     if (usedPlaces.includes(r)) upLeft = upLeft.filter((data) => data >= r);
   });
 
-  console.log(downRight);
   downRight.some((r) => {
     if (usedPlaces.includes(r))
       downRight = downRight.filter((data) => data <= r);
   });
-
-  console.log(downRight, "after");
 
   downLeft.some((r) => {
     if (usedPlaces.includes(r)) downLeft = downLeft.filter((data) => data <= r);
