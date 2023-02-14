@@ -23,19 +23,19 @@ export const moveFigure = (
   setName,
   sound
 ) => {
+  console.log(isClickedFigureWhite);
   switch (figure) {
     case "pyke":
-      if (isClickedFigureWhite == true) setImg(pyke);
-      else if (isClickedFigureWhite == false) setImg(pykeBlack);
+      setImg(isClickedFigureWhite ? pyke : pykeBlack);
       break;
     case "gamblier":
-      setImg(gamblier);
+      setImg(isClickedFigureWhite ? gamblier : gamblierBlack);
       break;
     case "queen":
-      setImg(queen);
+      setImg(isClickedFigureWhite ? queen : queenBlack);
       break;
     case "king":
-      setImg(king);
+      setImg(isClickedFigureWhite ? king : kingBlack);
       break;
     case "horse":
       setImg(isClickedFigureWhite ? horse : horseBlack);

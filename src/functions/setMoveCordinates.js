@@ -3,6 +3,9 @@ import store from "../store/store";
 import { moveOnRightPlace } from "./controlMoves/etliCordinates/moveOnRightPlace";
 import { cordinatesGeneratorForEtli } from "./controlMoves/etliCordinates/cordinatesGenerator";
 import { pykeMoves } from "./controlMoves/pykeMoves/pykeMoves";
+import { cordinatesGeneratorForGamblier } from "./controlMoves/gamblierCordinates/cordinatesForGamblier";
+import { cordinatesGeneratorForQueen } from "./controlMoves/cordinatesForQueen/cordinatesGenerator";
+import { cordinatesGeneratorForKing } from "./controlMoves/cordinatesForKing/cordinatesGeneratorForKing";
 let arr = [];
 let subarr = [];
 for (let i = 0; i < 64; i++) {
@@ -55,8 +58,34 @@ export const setMoveCordinates = (figureName, props, isWhite, firstClick) => {
         props,
         usedPlaces
       );
+      break;
+    case "gamblier":
+      cordinates = cordinatesGeneratorForGamblier(
+        indexOfLine,
+        indexOfFigure,
+        arr,
+        props,
+        usedPlaces
+      );
+      break;
+    case "queen":
+      cordinates = cordinatesGeneratorForQueen(
+        indexOfLine,
+        indexOfFigure,
+        arr,
+        props,
+        usedPlaces
+      );
 
       break;
+    case "king":
+      cordinates = cordinatesGeneratorForKing(
+        indexOfLine,
+        indexOfFigure,
+        arr,
+        props,
+        usedPlaces
+      );
   }
 
   return cordinates;

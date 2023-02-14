@@ -65,7 +65,6 @@ function Square(props) {
           )
         );
       } else if (name == "horse") {
-        console.log(usedPlaces);
         dispatch(
           figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
         );
@@ -73,7 +72,20 @@ function Square(props) {
         dispatch(
           figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
         );
+      } else if (name == "gamblier") {
+        dispatch(
+          figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
+        );
+      } else if (name == "queen") {
+        dispatch(
+          figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
+        );
+      } else if (name == "king") {
+        dispatch(
+          figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
+        );
       }
+
       setFigureActions(dispatch, figureActions, name, props.id, isWhite);
     } else if (
       figure &&
@@ -82,7 +94,6 @@ function Square(props) {
           data == props.id || (accesIds.includes(0) && props.id == 0 && figure)
       )
     ) {
-      console.log(usedPlaces);
       dispatch(figureActions.removeFromPlacedSpaces(id));
       dispatch(figureActions.addPlacesSpaces(props.id));
       if (
