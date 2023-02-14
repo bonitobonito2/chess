@@ -9,6 +9,9 @@ let initialState = {
   pykeFirstClick: true,
   isClickedFigureWhite: undefined,
   placedSpaces: [],
+  unclickedPykeCordinates: [
+    8, 9, 10, 11, 12, 13, 14, 15, 48, 49, 50, 51, 52, 53, 54, 55,
+  ],
 };
 
 const clickedFigureSlice = createSlice({
@@ -45,6 +48,10 @@ const clickedFigureSlice = createSlice({
     removeFromPlacedSpaces(state, action) {
       const indexOfItem = state.placedSpaces.indexOf(action.payload);
       state.placedSpaces.splice(indexOfItem, 1);
+    },
+    removePykeUnclickedCordinates(state, action) {
+      const indexOfItem = state.unclickedPykeCordinates.indexOf(action.payload);
+      state.unclickedPykeCordinates.splice(indexOfItem, 1);
     },
   },
 });
