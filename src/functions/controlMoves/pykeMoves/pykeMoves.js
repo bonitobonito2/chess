@@ -1,6 +1,5 @@
 export const pykeMoves = (
   isWhite,
-  firstClick,
   props,
   usedPlaces,
   unclickedPykeCordinates
@@ -26,9 +25,9 @@ export const pykeMoves = (
       }
     }
   });
-  if (usedPlaces.includes(props.id - 7) && isWhite) {
+  if (usedPlaces.includes(props.id - 7) && isWhite)
     cordinates.push(props.id - 7);
-  }
+
   if (usedPlaces.includes(props.id - 9) && isWhite) {
     cordinates.push(props.id - 9);
   }
