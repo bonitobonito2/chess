@@ -3,12 +3,9 @@ export const pykeMoves = (
   firstClick,
   props,
   usedPlaces,
-  unclickedPykeCordinates,
-  store
+  unclickedPykeCordinates
 ) => {
   let cordinates = [];
-  if (isWhite && firstClick) cordinates = [props.id - 8, props.id - 16];
-  else if (firstClick && !isWhite) cordinates = [props.id + 8, props.id + 16];
 
   if (unclickedPykeCordinates.includes(props.id)) {
     if (!isWhite) {
