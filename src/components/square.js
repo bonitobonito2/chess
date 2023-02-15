@@ -38,14 +38,15 @@ function Square(props) {
   const id = useSelector((data) => data.clickedFigureSlice.id);
   const figure = useSelector((data) => data.clickedFigureSlice.figure);
   const firstClick = useSelector((data) => data.clickedFigureSlice.clickedOnce);
+  const refresh = () => window.location.reload(true);
 
-  const usedPlaces = useSelector(
-    (data) => data.clickedFigureSlice.placedSpaces
-  );
   const isClickedFigureWhite = useSelector(
     (data) => data.clickedFigureSlice.isClickedFigureWhite
   );
 
+  const isWhiteTurn = useSelector(
+    (data) => data.clickedFigureSlice.whiteMoveTime
+  );
   const accesIds = useSelector(
     (data) => data.clickedFigureSlice.accessFigureIds
   );
@@ -54,8 +55,12 @@ function Square(props) {
   );
   const dispatch = useDispatch();
 
-  const clickHandler = useCallback(() => {
-    if (name && !firstClick) {
+  const clickHandler = useCallback(async () => {
+    if (
+      name &&
+      !firstClick &&
+      ((isWhiteTurn && isWhite) || (!isWhiteTurn && !isWhite))
+    ) {
       dispatch(
         figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
       );
@@ -80,7 +85,17 @@ function Square(props) {
           (firstClick && img && !isClickedFigureWhite && isWhite)
         ) {
           dispatch(figureActions.removeFromPlacedSpaces(id));
+          if (name === "king" && isWhite) {
+            alert("white lose");
+            refresh();
+          }
+          if (name == "king" && !isWhite) {
+            alert("black lose");
+            refresh();
+          }
         }
+        dispatch(figureActions.setWhiteMoveTurn(!isWhiteTurn));
+        console.log(figure);
         moveFigure(
           figure,
           isClickedFigureWhite,

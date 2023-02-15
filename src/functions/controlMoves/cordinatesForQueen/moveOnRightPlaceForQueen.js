@@ -38,7 +38,7 @@ export const moveOnRightPlaceForQueen = (
   downLeft.some((r) => {
     if (usedPlaces.includes(r)) downLeft = downLeft.filter((data) => data <= r);
   });
-  return up
+  const test = up
     .concat(down)
     .concat(left)
     .concat(right)
@@ -46,4 +46,5 @@ export const moveOnRightPlaceForQueen = (
     .concat(upLeft)
     .concat(downRight)
     .concat(downLeft);
+  return test;
 };

@@ -42,8 +42,6 @@ export const moveFigure = (
     case "etli":
       setImg(isClickedFigureWhite ? etli : etliBlack);
       break;
-    default:
-      setImg(queen);
   }
   setState(figure);
   dispatch(figureActions.setSecondClick(true));
