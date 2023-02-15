@@ -18,7 +18,7 @@ for (let i = 0; i < 64; i++) {
 }
 arr.push(subarr);
 
-export const setMoveCordinates = (figureName, props, isWhite, firstClick) => {
+export const setMoveCordinates = (figureName, props, isWhite) => {
   const usedPlaces = store.getState().clickedFigureSlice.placedSpaces;
 
   const unclickedPykeCordinates =

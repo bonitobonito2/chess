@@ -58,33 +58,9 @@ function Square(props) {
 
   const clickHandler = useCallback(() => {
     if (name && !firstClick) {
-      if (name == "pyke") {
-        dispatch(
-          figureActions.setAccesFigures(
-            setMoveCordinates(name, props, isWhite, pykeFirstClick)
-          )
-        );
-      } else if (name == "horse") {
-        dispatch(
-          figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
-        );
-      } else if (name == "etli") {
-        dispatch(
-          figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
-        );
-      } else if (name == "gamblier") {
-        dispatch(
-          figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
-        );
-      } else if (name == "queen") {
-        dispatch(
-          figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
-        );
-      } else if (name == "king") {
-        dispatch(
-          figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
-        );
-      }
+      dispatch(
+        figureActions.setAccesFigures(setMoveCordinates(name, props, isWhite))
+      );
 
       setFigureActions(dispatch, figureActions, name, props.id, isWhite);
     } else if (
