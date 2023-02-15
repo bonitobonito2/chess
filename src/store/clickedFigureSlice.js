@@ -6,7 +6,6 @@ let initialState = {
   clickedTwice: false,
   id: -1,
   accessFigureIds: [],
-  pykeFirstClick: true,
   isClickedFigureWhite: undefined,
   placedSpaces: [],
   unclickedPykeCordinates: [
@@ -34,9 +33,7 @@ const clickedFigureSlice = createSlice({
       state.accessFigureIds = [];
       state.accessFigureIds = action.payload;
     },
-    setPykeFirstClick(state) {
-      state.pykeFirstClick = false;
-    },
+
     setIsClickedFigureWhite(state, action) {
       state.isClickedFigureWhite = action.payload;
     },

@@ -49,7 +49,6 @@ export const moveFigure = (
   dispatch(figureActions.setSecondClick(true));
   setName(figure);
   dispatch(figureActions.setAccesFigures([]));
-  dispatch(figureActions.setPykeFirstClick());
   setIsWhite(isClickedFigureWhite);
   dispatch(figureActions.setIsClickedFigureWhite(undefined));
   sound();

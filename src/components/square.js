@@ -45,9 +45,7 @@ function Square(props) {
   const isClickedFigureWhite = useSelector(
     (data) => data.clickedFigureSlice.isClickedFigureWhite
   );
-  const pykeFirstClick = useSelector(
-    (data) => data.clickedFigureSlice.pykeFirstClick
-  );
+
   const accesIds = useSelector(
     (data) => data.clickedFigureSlice.accessFigureIds
   );
