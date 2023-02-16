@@ -21,7 +21,9 @@ export const moveFigure = (
   setState,
   setIsWhite,
   setName,
-  sound
+  sound,
+  killSound,
+  isCapture
 ) => {
   switch (figure) {
     case "pyke":
@@ -49,5 +51,9 @@ export const moveFigure = (
   dispatch(figureActions.setAccesFigures([]));
   setIsWhite(isClickedFigureWhite);
   dispatch(figureActions.setIsClickedFigureWhite(undefined));
-  sound();
+  if (isCapture) {
+    killSound();
+  } else {
+    sound();
+  }
 };

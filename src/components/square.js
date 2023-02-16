@@ -15,8 +15,10 @@ import { useSelector } from "react-redux";
 import { setMoveCordinates } from "../functions/setMoveCordinates";
 import { useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-
+import captureSound from "../sounds/capture.wav";
 import { moveFigure } from "../functions/moveFigure";
+
+import gamestartSound from "../sounds/game-start.wav";
 //blacks
 import pykeBlack from "../figures/blacks/pyke_b.png";
 import gamblierBlack from "../figures/blacks/gamblier_b.png";
@@ -30,6 +32,8 @@ import { remove } from "../functions/removeOnSameIdAndSecondClick";
 
 function Square(props) {
   const [sound] = useSound(moveSound);
+  const [killSound] = useSound(captureSound);
+  const [gameStartSound] = useSound(gamestartSound);
   const [state, setState] = useState("");
   const [img, setImg] = useState();
   const [isAcces, setAcces] = useState(false);
@@ -80,10 +84,12 @@ function Square(props) {
         (firstClick && img && !isClickedFigureWhite && isWhite) ||
         (firstClick && !img)
       ) {
+        let isCapture;
         if (
           (firstClick && img && isClickedFigureWhite && !isWhite) ||
           (firstClick && img && !isClickedFigureWhite && isWhite)
         ) {
+          isCapture = true;
           dispatch(figureActions.removeFromPlacedSpaces(id));
           if (name === "king" && isWhite) {
             alert("white lose");
@@ -105,7 +111,9 @@ function Square(props) {
           setState,
           setIsWhite,
           setName,
-          sound
+          sound,
+          killSound,
+          isCapture
         );
       }
     } else {
@@ -120,6 +128,7 @@ function Square(props) {
       setImg(img[0]);
       setIsWhite(img[2]);
     }
+    gameStartSound();
   }, []);
   useEffect(() => {
     const data = accesIds.find((data) => data == props.id);

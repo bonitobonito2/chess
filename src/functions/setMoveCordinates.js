@@ -40,7 +40,8 @@ export const setMoveCordinates = (figureName, props, isWhite) => {
         isWhite,
         props,
         usedPlaces,
-        unclickedPykeCordinates
+        unclickedPykeCordinates,
+        indexOfFigure
       );
 
       break;
