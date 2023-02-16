@@ -1,8 +1,15 @@
 import classes from "./game.module.css";
-
+import useSound from "use-sound";
+import start from "../sounds/game-start.wav";
 import Square from "../components/square";
+import { useEffect } from "react";
 let smth = true;
 function Game(props) {
+  const [sound] = useSound(start);
+
+  useEffect(() => {
+    sound();
+  }, []);
   return (
     <div className={classes.board}>
       {[...Array(64)].map((x, i) => {

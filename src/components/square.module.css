@@ -6,10 +6,10 @@
     cursor: pointer;
 }
 .point{
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     border-radius: 100px;
-    background-color: rgb(77, 4, 4);
+    background-color: rgb(52, 52, 52);
 }
 .redSquare{
     width: 80px;
@@ -25,7 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(73, 72, 72);
+    background-color: rgb(158, 106, 77);
 }
 
 
@@ -35,7 +35,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(240, 216, 167);
 }
 .kill{
     width: 100px;
@@ -44,5 +44,5 @@
     
 }
 .clicked{
-    background-color: rgba(59, 140, 71, 0.831);
+    background-color: rgba(153, 131, 107, 0.831);
 }

@@ -1,12 +1,10 @@
 .board{
     margin: 0 auto;
-    padding: 10px;
     display: flex;
     width: 640px;
     flex-direction: row;
     flex-wrap: wrap;
-    box-shadow: 1px 1px ;
-    /* gap: 10px; */
+    border: 15px solid black;
 }
 .squareBlack{
     color: rgb(41, 40, 40);

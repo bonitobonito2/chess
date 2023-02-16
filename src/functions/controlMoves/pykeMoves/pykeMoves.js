@@ -29,8 +29,6 @@ export const pykeMoves = (
 
   if (usedPlaces.includes(props.id - 7) && isWhite) {
     let nextRealCordinate = (props.id - 7) % 8;
-    console.log(nextRealCordinate);
-    console.log(indexOfFigure);
     if (nextRealCordinate - indexOfFigure == 1) {
       cordinates.push(props.id - 7);
     }
@@ -38,8 +36,6 @@ export const pykeMoves = (
 
   if (usedPlaces.includes(props.id - 9) && isWhite) {
     let nextRealCordinate = (props.id - 9) % 8;
-    console.log(nextRealCordinate);
-    console.log(indexOfFigure);
     if (indexOfFigure - nextRealCordinate == 1) {
       cordinates.push(props.id - 9);
     }
@@ -47,16 +43,12 @@ export const pykeMoves = (
 
   if (usedPlaces.includes(props.id + 7) && !isWhite) {
     let nextRealCordinate = (props.id + 7) % 8;
-    console.log(nextRealCordinate);
-    console.log(indexOfFigure);
     if (indexOfFigure - nextRealCordinate == 1) {
       cordinates.push(props.id + 7);
     }
   }
   if (usedPlaces.includes(props.id + 9) && !isWhite) {
     let nextRealCordinate = (props.id + 9) % 8;
-    console.log(nextRealCordinate);
-    console.log(indexOfFigure);
     if (nextRealCordinate - indexOfFigure == 1) {
       cordinates.push(props.id + 9);
     }

@@ -1,16 +1,13 @@
 import classes from "./square.module.css";
 import clickedFigureSlice, { figureActions } from "../store/clickedFigureSlice";
-import king from "../figures/whites/king.png";
-import etli from "../figures/whites/etli.png";
-import pyke from "../figures/whites/pyke.png";
+
 import { setFigureActions } from "../functions/setFigureActions";
-import gamblier from "../figures/whites/gamblier.png";
+
 import { memo, useMemo } from "react";
 import { imageGenerator } from "../functions/imageGenerator";
 import useSound from "use-sound";
 import { useCallback } from "react";
-import horse from "../figures/whites/horse.png";
-import queen from "../figures/whites/queen.png";
+
 import { useSelector } from "react-redux";
 import { setMoveCordinates } from "../functions/setMoveCordinates";
 import { useDispatch } from "react-redux";
@@ -19,13 +16,6 @@ import captureSound from "../sounds/capture.wav";
 import { moveFigure } from "../functions/moveFigure";
 
 import gamestartSound from "../sounds/game-start.wav";
-//blacks
-import pykeBlack from "../figures/blacks/pyke_b.png";
-import gamblierBlack from "../figures/blacks/gamblier_b.png";
-import horseBlack from "../figures/blacks/horse_b.png";
-import etliBlack from "../figures/blacks/etli_b.png";
-import queenBlack from "../figures/blacks/queen_b.png";
-import kingBlack from "../figures/blacks/king_b.png";
 import { removePosition } from "../functions/removePosition";
 import moveSound from "../sounds/moveSound.wav";
 import { remove } from "../functions/removeOnSameIdAndSecondClick";
@@ -33,7 +23,6 @@ import { remove } from "../functions/removeOnSameIdAndSecondClick";
 function Square(props) {
   const [sound] = useSound(moveSound);
   const [killSound] = useSound(captureSound);
-  const [gameStartSound] = useSound(gamestartSound);
   const [state, setState] = useState("");
   const [img, setImg] = useState();
   const [isAcces, setAcces] = useState(false);
@@ -128,7 +117,6 @@ function Square(props) {
       setImg(img[0]);
       setIsWhite(img[2]);
     }
-    gameStartSound();
   }, []);
   useEffect(() => {
     const data = accesIds.find((data) => data == props.id);
