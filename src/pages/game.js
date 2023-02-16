@@ -12,6 +12,12 @@ function Game(props) {
   }, []);
   return (
     <div className={classes.board}>
+      <div className={classes.text}>
+        <p>
+          this chess game is not for mobile devices, please go to google
+          settings, and check the Dekstop site
+        </p>
+      </div>
       {[...Array(64)].map((x, i) => {
         if (i % 8 == 0) smth = !smth;
         if (smth) {
