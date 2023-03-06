@@ -15,7 +15,7 @@ export const pykeMoves = (
     }
   } else if (isWhite) cordinates = [props.id - 8];
   else if (!isWhite) cordinates = [props.id + 8];
-
+//579 90 84 36
   cordinates.some((cordinate) => {
     if (usedPlaces.includes(cordinate)) {
       const index = cordinates.indexOf(cordinate);
