@@ -15,18 +15,20 @@ export const pykeMoves = (
     }
   } else if (isWhite) cordinates = [props.id - 8];
   else if (!isWhite) cordinates = [props.id + 8];
-//579 90 84 36
+//579 
   cordinates.some((cordinate) => {
     if (usedPlaces.includes(cordinate)) {
       const index = cordinates.indexOf(cordinate);
       if (index == 0) {
         cordinates = [];
       } else {
+      //90
         cordinates.splice(index, 1);
       }
     }
   });
-
+//84
+//36
   if (usedPlaces.includes(props.id - 7) && isWhite) {
     let nextRealCordinate = (props.id - 7) % 8;
     if (nextRealCordinate - indexOfFigure == 1) {
